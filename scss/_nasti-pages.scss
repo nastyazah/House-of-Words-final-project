@@ -1,0 +1,451 @@
+// Унікальні стилі для сторінки автора
+
+// Mixins для повторюваних стилів
+@mixin section-grid($columns: 1fr 1fr, $gap: 4rem) {
+    display: grid;
+    grid-template-columns: $columns;
+    gap: $gap;
+    align-items: start;
+}
+
+@mixin list-style($emoji: '❦') {
+    list-style: none;
+    margin: 2rem 0;
+
+    li {
+        padding: 0.5rem 0;
+        padding-left: 2rem;
+        position: relative;
+
+        &::before {
+            content: $emoji;
+            position: absolute;
+            left: 0;
+            color: $gold;
+        }
+    }
+}
+
+@mixin stat-grid($columns: 1fr 1fr, $gap: 1.5rem) {
+    display: grid;
+    grid-template-columns: $columns;
+    gap: $gap;
+}
+
+@mixin stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid $gold;
+}
+
+@mixin principle-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(139, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid $gold;
+    transition: $transition;
+
+    &:hover {
+        transform: translateX(10px);
+        background: rgba(139, 0, 0, 0.3);
+    }
+}
+
+@mixin text-styles {
+    p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+}
+
+@mixin quote-styles {
+    blockquote {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: $gold;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    cite {
+        color: $cream;
+        font-size: 0.9rem;
+        font-style: normal;
+    }
+}
+
+// Конструктивізм секція
+.constructivism-section {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.constructivism-content {
+    @include section-grid;
+}
+
+.constructivism-text {
+    @include text-styles;
+}
+
+.constructivism-list {
+    @include list-style('🏗️');
+}
+
+.constructivism-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.principle-item {
+    @include principle-item;
+}
+
+.principle-icon {
+    font-size: 2rem;
+    min-width: 60px;
+}
+
+.principle-content {
+    h3 {
+        color: $gold;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+// Переклади секція
+.translations-section {
+    background: rgba(90, 0, 0, 0.4);
+}
+
+.translations-content {
+    @include section-grid;
+}
+
+.translations-stats {
+    @include stat-grid;
+}
+
+.translation-stat {
+    @include stat-item;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $gold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: $cream;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.translations-text {
+    @include text-styles;
+}
+
+.translations-list {
+    @include list-style('📖');
+}
+
+// Спадщина секція
+.legacy-section {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.legacy-content {
+    @include section-grid(2fr 1fr);
+}
+
+.legacy-text {
+    @include text-styles;
+}
+
+.legacy-list {
+    @include list-style('❦');
+}
+
+.legacy-quote {
+    @include quote-styles;
+    
+    blockquote {
+        border-left: 3px solid $primary-red;
+        padding-left: 1rem;
+    }
+}
+
+// Критика секція
+.criticism-section {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.criticism-content {
+    @include section-grid;
+}
+
+.criticism-text {
+    @include text-styles;
+}
+
+.criticism-list {
+    @include list-style('🔍');
+}
+
+.criticism-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+// Театр секція
+.theater-section {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.theater-content {
+    @include section-grid(2fr 1fr);
+}
+
+.theater-text {
+    @include text-styles;
+}
+
+.theater-list {
+    @include list-style('🎭');
+}
+
+.theater-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.stat-item {
+    @include stat-item;
+}
+
+// Футуризм секція
+.futurism-section {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.futurism-content {
+    @include section-grid;
+}
+
+.futurism-text {
+    @include text-styles;
+}
+
+.futurism-list {
+    @include list-style('⚡');
+}
+
+.futurism-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+// Редагування секція
+.editing-section {
+    background: rgba(90, 0, 0, 0.4);
+}
+
+.editing-content {
+    @include section-grid;
+}
+
+.editing-stats {
+    @include stat-grid;
+}
+
+.editing-stat {
+    @include stat-item;
+}
+
+.editing-text {
+    @include text-styles;
+}
+
+.editing-list {
+    @include list-style('📝');
+}
+
+// Еволюція секція
+.evolution-section {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.evolution-content {
+    @include section-grid(2fr 1fr);
+}
+
+.evolution-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.stage-item {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background: rgba(139, 0, 0, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid $gold;
+    transition: $transition;
+
+    &:hover {
+        background: rgba(139, 0, 0, 0.2);
+        transform: translateX(10px);
+    }
+}
+
+.stage-period {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: $gold;
+    min-width: 120px;
+}
+
+.stage-content {
+    h3 {
+        color: $primary-red;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+}
+
+.evolution-quote {
+    padding: 2rem;
+    background: rgba(139, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid $gold;
+    
+    @include quote-styles;
+}
+
+// Модернізм секція
+.modernism-section {
+    background: rgba(90, 0, 0, 0.4);
+}
+
+.modernism-content {
+    @include section-grid;
+}
+
+.modernism-text {
+    @include text-styles;
+}
+
+.modernism-list {
+    @include list-style('✦');
+    
+    li::before {
+        font-size: 1.2em;
+    }
+}
+
+.modernism-principles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+// Додаткові стилі для доступності
+.principle-item,
+.translation-stat,
+.legacy-stat,
+.stat-item,
+.stage-item,
+.editing-stat {
+    &:focus-within {
+        outline: 3px solid $gold;
+        outline-offset: 2px;
+    }
+}
+
+// Адаптивність для унікальних елементів
+@media (max-width: 768px) {
+    .constructivism-content,
+    .translations-content,
+    .legacy-content,
+    .criticism-content,
+    .theater-content,
+    .futurism-content,
+    .editing-content,
+    .evolution-content,
+    .modernism-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .translations-stats,
+    .editing-stats,
+    .legacy-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .principle-item,
+    .stage-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .theater-stats {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .play-icon {
+        font-size: 3rem;
+    }
+    
+    .load-video-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .theater-stats {
+        flex-direction: column;
+    }
+
+    .stat-item,
+    .translation-stat,
+    .legacy-stat,
+    .editing-stat,
+    .stage-item {
+        padding: 1.5rem;
+    }
+
+    .principle-item {
+        padding: 1rem;
+    }
+
+    .modernism-text {
+        p {
+            font-size: 1rem;
+        }
+    }
+    
+    .modernism-list {
+        li {
+            padding-left: 1.5rem;
+        }
+    }
+}

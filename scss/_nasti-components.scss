@@ -1,0 +1,203 @@
+// Components SCSS
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin nav-link-underline {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $primary-red;
+    transition: $transition;
+}
+
+@mixin mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    padding: 1rem;
+}
+
+// Main Navigation
+.main-nav {
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid $primary-red;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    @include flex-between;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $gold;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    a {
+        color: $cream;
+        text-decoration: none;
+        transition: $transition;
+        position: relative;
+
+        &::after {
+            @include nav-link-underline;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            width: 100%;
+        }
+    }
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+
+    span {
+        width: 25px;
+        height: 3px;
+        background: $gold;
+        margin: 3px 0;
+        transition: $transition;
+    }
+}
+
+// Main Footer
+.main-footer {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 3rem 0 1rem;
+    border-top: 2px solid $primary-red;
+}
+
+.footer-content {
+    @include flex-between;
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    h3 {
+        color: $gold;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+
+    a {
+        color: $cream;
+        text-decoration: none;
+        transition: $transition;
+
+        &:hover,
+        &:focus {
+            color: $gold;
+        }
+    }
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+// Media Queries
+@media (max-width: 768px) {
+    .nav-menu {
+        @include mobile-menu;
+
+        &.active {
+            display: flex;
+        }
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+    }
+}
+
+// Additional responsive styles for smaller screens
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.8rem 15px;
+    }
+
+    .nav-logo {
+        font-size: 1.3rem;
+    }
+
+    .main-footer {
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-content {
+        margin-bottom: 1.5rem;
+    }
+}
+
+// Focus styles for accessibility
+.nav-toggle:focus,
+.nav-menu a:focus,
+.footer-links a:focus {
+    outline: 2px solid $gold;
+    outline-offset: 2px;
+}
+
+// Active state for current page
+.nav-menu a[aria-current="page"] {
+    color: $gold;
+    
+    &::after {
+        width: 100%;
+    }
+}

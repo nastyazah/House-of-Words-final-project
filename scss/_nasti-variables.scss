@@ -1,0 +1,27 @@
+// Variables SCSS
+$primary-red: #8B0000;
+$dark-red: #5A0000;
+$black: #000000;
+$gold: #D4A574;
+$cream: #F5F5DC;
+$primary-color: #D4A574;
+$secondary-color: #DC2F2F;
+$dark-bg: rgba(26, 3, 5, 0.95);
+$darker-bg: rgba(10, 1, 2, 0.98);
+$transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$shadow: 0 8px 32px rgba(220, 47, 47, 0.3);
+
+// CSS Custom Properties for backward compatibility
+:root {
+    --primary-red: #{$primary-red};
+    --dark-red: #{$dark-red};
+    --black: #{$black};
+    --gold: #{$gold};
+    --cream: #{$cream};
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --dark-bg: #{$dark-bg};
+    --darker-bg: #{$darker-bg};
+    --transition: #{$transition};
+    --shadow: #{$shadow};
+}
