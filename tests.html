@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Будинок Слова - музей та меморіал розстріляного відродження">
+    <meta name="keywords" content="Будинок Слова, розстріляне відродження, Харків, музей">
+    <title>Веб-тренажер - Будинок Слова</title>
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+    <div class="burger" aria-label="Відкрити меню" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="nav" aria-label="Основна навігація">
+        <div class="nav-content">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="participants.html">Учасники</a></li>
+                <li><a href="gallery.html" >Галерея</a></li>
+                <li><a href="events.html">Події</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+                <li><a href="library.html">Бібліотека</a></li>
+                <li><a href="tests.html" aria-current="page">Перевір себе</a></li>
+            </ul>
+            <div class="nav-decoration">
+                <div class="decoration-line"></div>
+                <span class="decoration-symbol">✦</span>
+                <div class="decoration-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-quiz">
+        <div class="ornament-border left"></div>
+        <div class="ornament-border right"></div>
+        
+        <div class="hero-content">
+            <h1 class="main-title fade-in">
+                <span class="title-word">ТЕСТ</span>
+                <span class="title-word highlight">ЗНАНЬ</span>
+            </h1>
+            <p class="subtitle fade-in-delay">Перевірте свої знання про розстріляне відродження</p>
+        </div>
+    </section>
+
+    <section class="quiz-intro" id="quizIntro">
+        <div class="container">
+            <div class="intro-content reveal">
+                <div class="intro-icon">📚</div>
+                <h2>Готові до тестування?</h2>
+                <p>У цьому тесті 30 запитань різних типів:</p>
+                <ul class="intro-list">
+                    <li>✓ Тестові завдання з одним правильною відповіддю</li>
+                    <li>✓ Завдання на відповідність</li>
+                    <li>✓ Цікаві факти після кожного питання</li>
+                </ul>
+                <p class="intro-note">Після завершення ви побачите свій результат та правильні відповіді</p>
+                <button class="start-btn" onclick="startQuiz()">
+                    <span>Розпочати тест</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-section" id="quizSection" style="display: none;">
+        <div class="container">
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Питання 1 з 30</div>
+            </div>
+
+            <div class="quiz-container" id="quizContainer"></div>
+
+            <div class="quiz-navigation">
+                <button class="nav-btn" id="prevBtn" onclick="prevQuestion()" disabled>Назад</button>
+                <button class="nav-btn primary" id="nextBtn" onclick="nextQuestion()">Далі</button>
+            </div>
+
+            <div class="fun-fact" id="funFact" style="display: none;">
+                <div class="fact-icon">💡</div>
+                <h3>Цікавий факт:</h3>
+                <p id="factText"></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quiz-results" id="quizResults" style="display: none;">
+        <div class="container">
+            <div class="results-content">
+                <div class="results-icon" id="resultsIcon"></div>
+                <h2 id="resultsTitle"></h2>
+                <div class="results-score">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 200 200">
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="#1a1a1a" stroke-width="10"/>
+                            <circle id="scoreCircle" cx="100" cy="100" r="90" fill="none" stroke="#E63946" stroke-width="10" 
+                                stroke-dasharray="565.48" stroke-dashoffset="565.48" transform="rotate(-90 100 100)"/>
+                        </svg>
+                        <div class="score-text">
+                            <span id="scorePercent">0%</span>
+                            <span class="score-label">правильних відповідей</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-details">
+                    <div class="result-detail">
+                        <span class="detail-label">Правильних відповідей:</span>
+                        <span class="detail-value" id="correctCount">0</span>
+                    </div>
+                    <div class="result-detail">
+                        <span class="detail-label">Неправильних відповідей:</span>
+                        <span class="detail-value" id="incorrectCount">0</span>
+                    </div>
+                    <div class="result-detail">
+                        <span class="detail-label">Оцінка:</span>
+                        <span class="detail-value grade" id="gradeValue">-</span>
+                    </div>
+                </div>
+                <p id="resultsMessage"></p>
+                <div class="results-buttons">
+                    <button class="result-btn" onclick="showAnswers()">
+                        <span>Переглянути відповіді</span>
+                    </button>
+                    <button class="result-btn secondary" onclick="restartQuiz()">
+                        <span>Пройти ще раз</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="answers-review" id="answersReview" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Перегляд відповідей</h2>
+            <div id="answersContainer"></div>
+            <button class="result-btn" onclick="backToResults()">
+                <span>Назад до результатів</span>
+            </button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-ornament"></div>
+            <p>&copy; 2025 Будинок Слова. Пам'ятаємо. Шануємо. Відроджуємо.</p>
+            <p class="footer-college">Фаховий коледж технологій бізнесу та права імені Лесі Українки</p>
+        </div>
+    </footer>
+
+    <script src="js/m.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Будинок Слова - музей та меморіал розстріляного відродження">
+    <meta name="keywords" content="Будинок Слова, розстріляне відродження, Харків, музей">
+    <meta property="og:title" content="Галерея - Будинок Слова">
+    <meta property="og:description" content="Фотоісторія розстріляного відродження">
+    <meta property="og:type" content="website">
+    <title>Галерея - Будинок Слова</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="burger" aria-label="Відкрити меню" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav class="nav" aria-label="Основна навігація">
+        <div class="nav-content">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="participants.html">Учасники</a></li>
+                <li><a href="gallery.html" aria-current="page">Галерея</a></li>
+                <li><a href="events.html">Події</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+                <li><a href="library.html">Бібліотека</a></li>
+                <li><a href="tests.html">Перевір себе</a></li>
+            </ul>
+            <div class="nav-decoration">
+                <div class="decoration-line"></div>
+                <span class="decoration-symbol">✦</span>
+                <div class="decoration-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-gallery">
+        <div class="ornament-border left"></div>
+        <div class="ornament-border right"></div>
+        
+        <div class="hero-content">
+            <h1 class="main-title fade-in">
+                <span class="title-word">ГАЛЕРЕЯ</span>
+                <span class="title-word highlight">СПОГАДІВ</span>
+            </h1>
+            <p class="subtitle fade-in-delay">Фотоісторія розстріляного відродження</p>
+        </div>
+    </section>
+
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-buttons reveal">
+                <button class="filter-btn active" data-filter="all">Всі фото</button>
+                <button class="filter-btn" data-filter="building">Будинок</button>
+                <button class="filter-btn" data-filter="writers">Письменники</button>
+                <button class="filter-btn" data-filter="sixties">Шістдесятники</button>
+                <button class="filter-btn" data-filter="documents">Документи</button>
+                <button class="filter-btn" data-filter="memorial">Меморіальні</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-main">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item" data-category="building">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/Slovo3.jpg" alt="Будинок Слово зверху"  loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Будинок «Слово» з висоти пташиного польоту</h3>
+                            <p>Символічна форма літери «С»</p>
+                            <button class="view-btn" onclick="openModal(0)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="building">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/Slovo1.jpg" alt="Меморіальна дошка мешканців будинку Слово" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Меморіальна дошка мешканців</h3>
+                            <p>Пам'ять про геніїв української культури</p>
+                            <button class="view-btn" onclick="openModal(1)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="building">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/05-45-house-word-historical-photo-03.jpg" alt="Фасад будинку Слово" loading="lazy" >
+                        <div class="gallery-overlay">
+                            <h3>Фасад будинку «Слово»</h3>
+                            <p>Архітектурний стиль модерн-конструктивізм</p>
+                            <button class="view-btn" onclick="openModal(2)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="writers">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/остап.jpeg" alt="Портрет Остапа Вишні" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Остап Вишня</h3>
+                            <p>Класик української гумористики</p>
+                            <button class="view-btn" onclick="openModal(3)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="writers">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/хви.jpeg" alt="Портрет Миколи Хвильового" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Микола Хвильовий</h3>
+                            <p>Ідейний натхненник гасла «Геть від Москви!»</p>
+                            <button class="view-btn" onclick="openModal(4)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="writers">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/ку.jpeg" alt="Портрет Миколи Куліша" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Микола Куліш</h3>
+                            <p>Видатний драматург епохи</p>
+                            <button class="view-btn" onclick="openModal(5)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="sixties">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/стус.jpeg" alt="Портрет Василя Стуса" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Василь Стус</h3>
+                            <p>Поет-дисидент, символ опору</p>
+                            <button class="view-btn" onclick="openModal(6)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="sixties">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/дзюба.jpeg" alt="Портрет Івана Дзюби" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Іван Дзюба</h3>
+                            <p>Літературознавець та дисидент</p>
+                            <button class="view-btn" onclick="openModal(7)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="documents">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/книга.jpeg" alt="Обкладинка книги про будинок Слово" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Книга «Слово про будинок "Слово"»</h3>
+                            <p>Історія мешканців будинку</p>
+                            <button class="view-btn" onclick="openModal(8)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="documents">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/док.jpeg" alt="Архівні документи репресій 1930-х років" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Документи репресій 1930-х</h3>
+                            <p>Архівні матеріали про арешти мешканців</p>
+                            <button class="view-btn" onclick="openModal(9)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="memorial">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/мем.jpeg" alt="Меморіал розстріляного відродження" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Меморіал розстріляного відродження</h3>
+                            <p>Пам'ятник жертвам сталінських репресій</p>
+                            <button class="view-btn" onclick="openModal(10)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="memorial">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/могили.jpeg" alt="Могили репресованих письменників" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Могили репресованих письменників</h3>
+                            <p>Місця поховань жертв політичних репресій</p>
+                            <button class="view-btn" onclick="openModal(11)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="memorial">
+                    <div class="gallery-image">
+                        <img src="/home/user23se47/Стільниця/будинок слова/img/музей.jpeg" alt="Експозиція музею українських письменників" loading="lazy"> 
+                        <div class="gallery-overlay">
+                            <h3>Музей українських письменників</h3>
+                            <p>Експозиція присвячена розстріляному відродженню</p>
+                            <button class="view-btn" onclick="openModal(12)">Детальніше</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gallery-modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" onclick="closeModal()" aria-label="Закрити галерею">&times;</button>
+        <button class="modal-nav prev" onclick="prevImage()" aria-label="Попереднє зображення">&#10094;</button>
+        <button class="modal-nav next" onclick="nextImage()" aria-label="Наступне зображення">&#10095;</button>
+        
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div class="modal-info">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div class="modal-fact" id="modalFact"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-ornament"></div>
+            <p>&copy; 2025 Будинок Слова. Пам'ятаємо. Шануємо. Відроджуємо.</p>
+            <p class="footer-college">Фаховий коледж технологій бізнесу та права імені Лесі Українки</p>
+        </div>
+    </footer>
+
+    <script src="js/m.js"></script>
+</body>
+</html>
