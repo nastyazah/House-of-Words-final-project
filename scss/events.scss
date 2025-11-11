@@ -1962,8 +1962,6 @@ section {
     50% { opacity: 1; }
 }
 
-
-/* Mobile-specific fix: avoid fixed background attachment on mobile for registration section */
 @media (max-width: 768px) {
     .registration-section {
         background-attachment: scroll;
