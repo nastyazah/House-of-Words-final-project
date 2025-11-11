@@ -68,19 +68,7 @@ body {
   padding: 0 20px;
 }
 
-/*.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: #050101;
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  z-index: 1001;
-}
-.skip-link:focus {
-  top: 6px;
-}*/
+
 
 section {
   padding: 80px 0;
@@ -1172,6 +1160,51 @@ a:focus {
 .editing-stat:focus-within {
   outline: 3px solid #D4A574;
   outline-offset: 2px;
+}
+.humor-section {
+  background: rgba(90, 0, 0, 0.4);
+}
+
+.humor-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.humor-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.humor-list {
+  list-style: none;
+  margin: 2rem 0;
+}
+.humor-list li {
+  padding: 0.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+.humor-list li::before {
+  content: "😊";
+  position: absolute;
+  left: 0;
+  color: #D4A574;
+}
+
+.humor-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .humor-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
