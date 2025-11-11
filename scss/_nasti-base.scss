@@ -1,0 +1,621 @@
+// Base SCSS
+
+// Mixins
+@mixin reset-box-model {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin grid-center {
+    display: grid;
+    align-items: center;
+}
+
+@mixin performance-optimize {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+@mixin section-spacing {
+    padding: 80px 0;
+    position: relative;
+}
+
+@mixin card-hover-effect {
+    transition: $transition;
+    
+    &:hover {
+        transform: translateY(-5px) translateZ(0);
+        box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+    }
+}
+
+@mixin timeline-item-style {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(139, 0, 0, 0.1);
+    border-left: 3px solid $gold;
+    border-radius: 0 8px 8px 0;
+    transition: $transition;
+
+    &:hover {
+        background: rgba(139, 0, 0, 0.2);
+        transform: translateX(5px);
+    }
+}
+
+// Reset - more specific than universal selector
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    @include reset-box-model;
+}
+
+// Base HTML styles
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, $black 0%, $dark-red 100%);
+    color: $cream;
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+    // Performance optimization
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+// Performance optimization classes
+.hero-content,
+.work-card,
+.timeline-item,
+.fact-item {
+    will-change: transform, opacity;
+}
+
+// Remove will-change after animation completes
+.hero-content.animated,
+.work-card.visible,
+.timeline-item.visible,
+.fact-item.visible {
+    will-change: auto;
+}
+
+// Layout components
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: $primary-red;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1001;
+
+    &:focus {
+        top: 6px;
+    }
+}
+
+section {
+    @include section-spacing;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: $gold;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.section-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $primary-red, transparent);
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+// Hero Section
+.hero-section {
+    min-height: 100vh;
+    @include flex-center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.2) 0%, transparent 50%);
+    
+    // Performance optimization
+    @include performance-optimize;
+}
+
+.ukrainian-ornament {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 0, 0, 0.1) 10px, rgba(139, 0, 0, 0.1) 20px);
+    opacity: 0.3;
+    
+    // Performance optimization
+    @include performance-optimize;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    @include grid-center;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: bold;
+    color: $gold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: $cream;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.hero-quote {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: $primary-red;
+    font-weight: bold;
+    border-left: 4px solid $gold;
+    padding-left: 1rem;
+}
+
+.hero-image {
+    position: relative;
+    @include flex-center;
+}
+
+.author-photo {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    filter: sepia(30%) contrast(1.1);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 10px rgba(139, 0, 0, 0.3);
+    
+    // Performance optimization
+    @include performance-optimize;
+}
+
+.photo-frame {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border: 2px solid $gold;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: $gold;
+    margin: 0 auto;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: -4px;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid $gold;
+        border-bottom: 2px solid $gold;
+        transform: rotate(45deg);
+    }
+}
+
+// Biography section
+.bio-section {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.bio-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.bio-paragraph {
+    margin-bottom: 3rem;
+
+    h3 {
+        color: $primary-red;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 3px solid $gold;
+        padding-left: 1rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+}
+
+.bio-timeline {
+    position: sticky;
+    top: 100px;
+}
+
+.timeline-item {
+    @include timeline-item-style;
+}
+
+.timeline-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $gold;
+    margin-bottom: 0.5rem;
+}
+
+// Works section
+.works-section {
+    background: rgba(90, 0, 0, 0.3);
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.work-card {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $primary-red;
+    text-align: center;
+    
+    // Performance optimization
+    @include performance-optimize;
+    @include card-hover-effect;
+}
+
+.work-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.work-card h3 {
+    color: $gold;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.work-quote {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(139, 0, 0, 0.2);
+    border-left: 3px solid $gold;
+    font-style: italic;
+    color: $cream;
+}
+
+// Facts section
+.facts-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.fact-item {
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $primary-red;
+    transition: $transition;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.7);
+        transform: translateX(5px);
+    }
+}
+
+.fact-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $gold;
+    min-width: 60px;
+}
+
+.fact-content h3 {
+    color: $primary-red;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+// Quotes section
+.quotes-section {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.quotes-slider {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    position: relative;
+    min-height: 200px;
+}
+
+.quote {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+
+    &.active {
+        display: block;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    color: $gold;
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.quote-author {
+    color: $primary-red;
+    font-weight: bold;
+}
+
+.quote-nav {
+    @include flex-center;
+    gap: 1rem;
+}
+
+.quote-prev,
+.quote-next {
+    background: $primary-red;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: $transition;
+
+    &:hover,
+    &:focus {
+        background: $gold;
+        color: $black;
+        transform: scale(1.1);
+    }
+}
+
+.quote-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $cream;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: $transition;
+
+    &.active {
+        opacity: 1;
+        background: $primary-red;
+        transform: scale(1.2);
+    }
+
+    &:hover {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+// Accessibility
+button:focus,
+a:focus {
+    outline: 3px solid $gold;
+    outline-offset: 2px;
+}
+
+.work-card:focus-within,
+.timeline-item:focus,
+.fact-item:focus-within {
+    outline: 3px solid $gold;
+    outline-offset: 2px;
+}
+
+// Media Queries
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .bio-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .bio-timeline {
+        position: static;
+    }
+
+    .fact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-section {
+        padding-top: 70px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .work-card {
+        padding: 1.5rem;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+
+    .fact-item {
+        padding: 1.5rem;
+    }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+// High contrast support
+@media (prefers-contrast: high) {
+    :root {
+        --primary-red: #FF0000;
+        --gold: #FFFF00;
+        --cream: #FFFFFF;
+    }
+}
+
+// Performance: Reduce animations on low-end devices
+@media (prefers-reduced-motion: no-preference) and (min-width: 769px) {
+    .work-card:hover {
+        animation: cardHover 0.3s ease;
+    }
+    
+    @keyframes cardHover {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-7px); }
+        100% { transform: translateY(-5px); }
+    }
+}

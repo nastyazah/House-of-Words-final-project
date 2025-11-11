@@ -1,0 +1,35 @@
+{
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "css/",
+            "includeItems": [
+                "**/nasti-main.scss"
+            ]
+        },
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "css/",
+            "includeItems": [
+                "**/participants.scss"
+            ]
+        }
+    ],
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        "**/_nasti-base.scss",
+        "**/_nasti-components.scss",
+        "**/_nasti-mixins.scss",
+        "**/_nasti-pages.scss",
+        "**/_nasti-variables.scss",
+        "**/_nasti-paticipants.scss"
+    ],
+    "liveSassCompile.settings.generateMap": true,
+    "liveSassCompile.settings.autoprefix": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "liveSassCompile.settings.showOutputWindowOn": "Warning"
+}
