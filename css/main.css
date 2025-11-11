@@ -1,6 +1,4 @@
 @charset "UTF-8";
-
-/* ========== ЗМІННІ ========== */
 :root {
   --color-black: #000000;
   --color-dark-gray: #1a1a1a;
@@ -16,8 +14,6 @@
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.2s ease;
 }
-
-/* ========== БАЗОВІ СТИЛІ ========== */
 * {
   margin: 0;
   padding: 0;
@@ -37,8 +33,6 @@ body {
   margin: 0 auto;
   padding: 0 40px;
 }
-
-/* ========== НАВІГАЦІЯ ========== */
 .burger {
   width: 40px;
   height: 35px;
@@ -301,12 +295,10 @@ body {
 .subtitle::before { top: 0; }
 .subtitle::after { bottom: 0; }
 
-/* ========== EVENT INFO (виправлено для Events сторінки) ========== */
 .event-info {
     margin-top: 80px;
     text-align: center;
     position: relative;
-    /* Додаємо вищий z-index для батьківського контейнера */
     z-index: 50;
 }
 
@@ -344,7 +336,6 @@ body {
     animation: twinkle 2s ease-in-out infinite;
 }
 
-/* Виправлене спливаюче вікно - додано вищий z-index */
 .event-details {
     display: flex;
     flex-direction: column;
@@ -366,7 +357,7 @@ body {
     padding: 25px;
     box-shadow: 0 20px 50px rgba(230, 57, 70, 0.5);
     backdrop-filter: blur(15px);
-    z-index: 1000; /* ДОДАНО: високий z-index щоб перекривати всі елементи */
+    z-index: 1000; 
     width: 90%;
     max-width: 400px;
     pointer-events: none;
@@ -438,7 +429,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* ========== SCROLL INDICATOR ========== */
 .scroll-indicator {
   position: absolute;
   bottom: 40px;
@@ -461,7 +451,6 @@ body {
   transform: rotate(45deg);
 }
 
-/* ========== ГАЛЕРЕЯ ========== */
 .gallery-filters {
   padding: 50px 0;
   background: var(--color-black);
@@ -498,7 +487,7 @@ body {
   box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
 }
 
-/* Lazy loading стилі */
+/* Lazy loading style */
 img[loading="lazy"] {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -617,7 +606,6 @@ img.lazy-error {
   background: var(--color-gold);
 }
 
-/* Gallery Modal */
 .gallery-modal {
   display: none;
   position: fixed;
@@ -726,7 +714,6 @@ img.lazy-error {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* ========== КОНТАКТИ ========== */
 .contacts-main {
   padding: 100px 0;
   background: var(--color-black);
@@ -809,7 +796,6 @@ img.lazy-error {
   transform: scale(1.05);
 }
 
-/* Social Section */
 .social-section {
   padding: 100px 0;
   background: linear-gradient(135deg, var(--color-dark-gray), var(--color-black));
@@ -923,7 +909,6 @@ img.lazy-error {
   z-index: 1;
 }
 
-/* Map Section */
 .map-section {
   padding: 100px 0;
   background: var(--color-black);
@@ -973,7 +958,6 @@ img.lazy-error {
   font-size: 0.95rem;
 }
 
-/* ========== ФОРМА ЗВОРОТНЬОГО ЗВ'ЯЗКУ ========== */
 .feedback-section {
   padding: 100px 0;
   background: linear-gradient(135deg, var(--color-dark-gray), var(--color-black));
@@ -1206,8 +1190,6 @@ img.lazy-error {
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-/* ========== СПЛИВАЮЧЕ ВІКНО УСПІХУ (contacts.html) - ОНОВЛЕНО ========== */
-
 .success-notification {
     display: none;
     text-align: center;
@@ -1277,7 +1259,6 @@ img.lazy-error {
     line-height: 1.6;
 }
 
-/* Анімації для іконки успіху */
 @keyframes successPulse {
     0%, 100% { 
         transform: scale(1);
@@ -1300,7 +1281,6 @@ img.lazy-error {
     }
 }
 
-/* Медіа-запити */
 @media (max-width: 768px) {
     .success-notification {
         padding: 40px 25px;
@@ -1329,7 +1309,6 @@ img.lazy-error {
     }
 }
 
-/* ========== КВІЗ ========== */
 .quiz-intro {
   padding: 100px 0;
   background: var(--color-black);
@@ -1661,7 +1640,6 @@ img.lazy-error {
   line-height: 1.6;
 }
 
-/* Quiz Results */
 .quiz-results {
   padding: 100px 0;
   background: var(--color-black);
@@ -1827,7 +1805,6 @@ img.lazy-error {
   color: var(--color-white);
 }
 
-/* Answers Review */
 .answers-review {
   padding: 100px 0;
   background: var(--color-black);
@@ -1912,16 +1889,13 @@ img.lazy-error {
   color: white;
 }
 
-/* ========== СЕКЦІЇ СТОРІНКИ EVENTS ========== */
-/* ВИПРАВЛЕНО: додано відступи, щоб секція не заходила на хедер */
 .about-section {
-    /* ДОДАНО: більше відступу зверху, щоб не заходило на хедер */
     padding: 120px 0 100px;
-    margin-top: 50px; /* ДОДАНО: відступ від попередньої секції */
+    margin-top: 50px; 
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), url("../img/еб.jpeg") center/cover;
     background-attachment: fixed;
-    position: relative; /* Для коректного позиціонування */
-    z-index: 10; /* Нижче за popup, але вище за фон */
+    position: relative; 
+    z-index: 10; 
 }
 
 .section-ornament {
@@ -1975,7 +1949,6 @@ img.lazy-error {
   color: var(--color-white-soft);
 }
 
-/* Program Section */
 .program-section {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(26, 26, 26, 0.95)), url("../img/сцена.jpeg") center/cover;
 }
@@ -2055,7 +2028,6 @@ img.lazy-error {
   color: var(--color-gray);
 }
 
-/* MUR Section */
 .mur-section {
   background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), url("../img/план.jpeg") center/cover;
   background-attachment: fixed;
@@ -2170,7 +2142,6 @@ img.lazy-error {
   font-style: italic;
 }
 
-/* Performances Section */
 .performances-section {
   background: var(--color-black);
   padding: 120px 0;
@@ -2453,7 +2424,6 @@ img.lazy-error {
   color: var(--color-white-soft);
 }
 
-/* Quote Section */
 .quote-section {
   padding: 150px 0;
   background: radial-gradient(ellipse at center, rgba(230, 57, 70, 0.15) 0%, transparent 70%), linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), url("../img/поет.jpeg") center/cover;
@@ -2525,7 +2495,6 @@ img.lazy-error {
   right: 0;
 }
 
-/* Registration Section */
 .registration-section1 {
   padding: 120px 0;
   background: 
@@ -2630,7 +2599,6 @@ img.lazy-error {
   transform: translateY(-1px) scale(1.02);
 }
 
-/* Registration Modal */
 .modal-overlay1 {
   position: fixed;
   top: 0;
@@ -2832,7 +2800,6 @@ img.lazy-error {
   line-height: 1.6;
 }
 
-/* ========== FOOTER ========== */
 .footer {
   padding: 60px 0;
   background: var(--color-black);
@@ -2886,7 +2853,6 @@ img.lazy-error {
   font-size: 1.1rem;
 }
 
-/* ========== ДЕКОРАТИВНІ ЕЛЕМЕНТИ ========== */
 .ornament-border {
   position: absolute;
   width: 60px;
@@ -2967,7 +2933,6 @@ img.lazy-error {
   animation: shimmerLine 3s ease-in-out infinite;
 }
 
-/* ========== АНІМАЦІЇ ========== */
 @keyframes titleFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -3137,7 +3102,6 @@ img.lazy-error {
   }
 }
 
-/* ========== REVEAL АНІМАЦІЇ ========== */
 .fade-in,
 .fade-in-delay,
 .fade-in-delay-2 {
@@ -3184,7 +3148,6 @@ img.lazy-error {
   transition-delay: 0.4s;
 }
 
-/* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -3202,7 +3165,6 @@ img.lazy-error {
   background: var(--color-gold);
 }
 
-/* ========== МЕДІА ЗАПИТИ ========== */
 @media (max-width: 1024px) {
   .container {
     padding: 0 30px;
