@@ -102,7 +102,11 @@ class ParticleSystem {
     isHighPerformanceDevice() {
         const memory = navigator.deviceMemory;
         const cores = navigator.hardwareConcurrency;
-        return memory >= 4 && cores >= 4;
+        if (memory !== undefined) {
+            return memory >= 4 && cores >= 4;
+        } else {
+            return cores >= 4;
+        }
     }
 
     createCanvas() {
@@ -1435,6 +1439,13 @@ class QuizManager {
     }
 
     selectLeft(index) {
+        const question = this.quizData[this.currentQuestion];
+        const userPairs = this.userAnswers[this.currentQuestion] || [];
+
+        if (userPairs.find(p => p.left === question.pairs[index].left)) {
+            return; // already matched
+        }
+
         if (this.matchingAnswers.leftSelected === index) {
             this.matchingAnswers.leftSelected = null;
         } else {
@@ -1444,7 +1455,6 @@ class QuizManager {
                 if (!this.userAnswers[this.currentQuestion]) {
                     this.userAnswers[this.currentQuestion] = [];
                 }
-                const question = this.quizData[this.currentQuestion];
                 if (question && question.pairs[index]) {
                     this.userAnswers[this.currentQuestion].push({
                         left: question.pairs[index].left,
@@ -1469,6 +1479,13 @@ class QuizManager {
     }
 
     selectRight(index, value) {
+        const question = this.quizData[this.currentQuestion];
+        const userPairs = this.userAnswers[this.currentQuestion] || [];
+
+        if (userPairs.find(p => p.right === value)) {
+            return; // already matched
+        }
+
         if (this.matchingAnswers.rightSelected === index) {
             this.matchingAnswers.rightSelected = null;
             this.matchingAnswers.rightValue = null;
@@ -1480,7 +1497,6 @@ class QuizManager {
                 if (!this.userAnswers[this.currentQuestion]) {
                     this.userAnswers[this.currentQuestion] = [];
                 }
-                const question = this.quizData[this.currentQuestion];
                 if (question && question.pairs[this.matchingAnswers.leftSelected]) {
                     this.userAnswers[this.currentQuestion].push({
                         left: question.pairs[this.matchingAnswers.leftSelected].left,
