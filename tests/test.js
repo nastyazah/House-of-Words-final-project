@@ -1,5 +1,3 @@
-// Unit tests for key functions
-
 // Mock DOM elements for testing
 document.body.innerHTML = `
   <div id="quizIntro"></div>
