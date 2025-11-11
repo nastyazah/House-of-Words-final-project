@@ -1,7 +1,6 @@
-// Перевірка на зменшення руху
 const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Утиліти
+// utulitly
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
