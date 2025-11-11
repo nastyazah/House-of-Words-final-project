@@ -1,7 +1,6 @@
-// Перевірка на зменшення руху
 const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Утиліти
+// utulity
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -1483,7 +1482,7 @@ class QuizManager {
         const userPairs = this.userAnswers[this.currentQuestion] || [];
 
         if (userPairs.find(p => p.right === value)) {
-            return; // already matched
+            return; 
         }
 
         if (this.matchingAnswers.rightSelected === index) {
